@@ -1,21 +1,15 @@
 import { Header, Dropdown, CharacterCounter } from "./exports/header";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useToggleMenuContext } from "./context/MenuContext";
 function App() {
   const { toggleMenu } = useToggleMenuContext();
   return (
     <div>
       {/* {toggleMenu && <Dropdown />} */}
-      <Router>
-        <Routes>
-          {/* <Route exact path="/" element={<Header />} /> */}
-          <Route
-            exact
-            path="/character-counter"
-            element={<CharacterCounter />}
-          />
-        </Routes>
-      </Router>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<CharacterCounter />} />
+      </Routes>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 {
   "name": "myproject",
   "version": "0.1.0",
+  "homepage": "https://character-counter.onrender.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

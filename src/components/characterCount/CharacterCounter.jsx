@@ -117,7 +117,7 @@ const CharacterCounter = () => {
         <h2>Guide on how to use the Character Counter</h2>
         <h2>What Is Character Count?</h2>
         <span>
-          Although some think that character count is the total number of
+          Although, some folks think that character count is the total number of
           letters in a text, it is the total count of all characters, including
           spaces. It is mostly needed when a text or a document must stay within
           certain numbers of characters. Additionally, some translators use

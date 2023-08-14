@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Header, Dropdown, CharacterCounter } from "./exports/header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useToggleMenuContext } from "./context/MenuContext";
 function App() {
+  const { toggleMenu } = useToggleMenuContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* {toggleMenu && <Dropdown />} */}
+      <Router>
+        <Routes>
+          {/* <Route exact path="/" element={<Header />} /> */}
+          <Route
+            exact
+            path="/character-counter"
+            element={<CharacterCounter />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }

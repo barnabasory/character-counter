@@ -1,5 +1,5 @@
 import { Header, Dropdown, CharacterCounter } from "./exports/header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { useToggleMenuContext } from "./context/MenuContext";
 function App() {
   const { toggleMenu } = useToggleMenuContext();

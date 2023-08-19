@@ -11,13 +11,13 @@
     grid-column: span 1;
     transform: scale(2);
     cursor: pointer;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
 
     &:hover {
       background-color: rgba($color: #000000, $alpha: 0.2);
-      padding: 3px;
-      padding-left: 5px;
-      padding-right: 5px;
-      border-radius: 3px;
     }
   }
 
@@ -36,6 +36,25 @@
     .dark_bg {
       background-color: black;
       color: rgba($color: #000000, $alpha: 0.6);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    grid-gap: 20px;
+
+    .hamburger {
+      transform: scale(1.5);
+    }
+
+    .logo {
+      font-size: clamp(1.8rem, 0.4vw, 3.2rem);
+      line-height: 30px;
+      text-align: center;
+    }
+    .toggleTheme {
+      transform: scale(1.2);
     }
   }
 }

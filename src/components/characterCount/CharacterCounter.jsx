@@ -28,7 +28,7 @@ const CharacterCounter = () => {
   };
   const getParagraphCount = (paragraph) => {
     if (!paragraph) {
-      return setWords(0);
+      return setParagraphs(0);
     }
     return setParagraphs(paragraph.trim().split("\n\n").length);
   };
@@ -54,7 +54,7 @@ const CharacterCounter = () => {
     return setUniqueWords(set.size);
   };
   return (
-    <div className={`sw_70 ${styles.wrapper}`}>
+    <div className={`sw ${styles.wrapper}`}>
       <div className={styles.display_fields_upper}>
         <div className={styles.characters}>
           <span>Characters</span>
@@ -114,24 +114,19 @@ const CharacterCounter = () => {
       </div>
 
       <div className={styles.overview}>
-        <h2>Guide on how to use the Character Counter</h2>
-        <h2>What Is Character Count?</h2>
+        <h3>What is the Character Counter App?</h3>
         <span>
-          Although, some folks think that character count is the total number of
-          letters in a text, it is the total count of all characters, including
-          spaces. It is mostly needed when a text or a document must stay within
-          certain numbers of characters. Additionally, some translators use
-          character count without spaces to determine the price of a translation
-          job.
-        </span>
-        <h2>What Is Character Count?</h2>
-        <span>
-          Although some think that character count is the total number of
-          letters in a text, it is the total count of all characters, including
-          spaces. It is mostly needed when a text or a document must stay within
-          certain numbers of characters. Additionally, some translators use
-          character count without spaces to determine the price of a translation
-          job.
+          In the digital age, where messages and content are exchanged in
+          rapid-fire succession, the art of concise communication has become
+          more crucial than ever. <br /> <br />{" "}
+          <em>The Character Counter App</em> is a powerful tool designed to aid
+          individuals, writers, and professionals in mastering the art of
+          brevity while ensuring their messages remain impactful. At its core,
+          the Character Counter App is a user-friendly application engineered to
+          provide real-time character and word count analysis. Whether you're
+          drafting an email, composing a tweet, crafting a blog post, or working
+          on any form of written communication, this app serves as your vigilant
+          companion, helping you stay within specified character limits.
         </span>
       </div>
     </div>

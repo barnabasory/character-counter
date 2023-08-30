@@ -13,8 +13,6 @@ const Header = () => {
 
   const matchingLink = data.find((link) => link.anchor === urlSlug);
 
-  const toggleTheme = false;
-
   return (
     <>
       <section className={`fw ${styles.wrapper}`}>
@@ -28,7 +26,7 @@ const Header = () => {
         {matchingLink && <h1 className={styles.logo}>{matchingLink.text}</h1>}
 
         <div className={styles.toggleTheme}>
-          {toggleTheme && <BsFillSunFill />}
+          {/* {<BsFillSunFill />} */}
           {<BsFillMoonFill />}
         </div>
       </section>

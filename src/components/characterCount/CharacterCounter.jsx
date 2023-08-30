@@ -1,5 +1,6 @@
 import styles from "./CharacterCounter.module.scss";
 import { useState } from "react";
+
 const CharacterCounter = () => {
   const [value, setValue] = useState("");
   const [characters, setCharacters] = useState(0);
@@ -20,35 +21,36 @@ const CharacterCounter = () => {
     getUniqueWords(inputValue.trim());
   };
 
+  //words
   const getWordsCount = (str) => {
     if (!str) {
       return setWords(0);
     }
     return setWords(str.split(" ").length + 1);
   };
+
+  //paragraph
   const getParagraphCount = (paragraph) => {
     if (!paragraph) {
       return setParagraphs(0);
     }
     return setParagraphs(paragraph.trim().split("\n\n").length);
   };
+
+  //sentences
   const getSentencesCount = (sentence) => {
     if (!sentence) {
       return setWords(0);
     }
     setSentence(sentence.trim().split(/[.?!]/g).filter(Boolean).length);
-
-    // const filteredSentences = sentences.filter((sentence) => {
-    //   const capFirstLetter = sentence.charAt(0);
-    //   const upperCase = capFirstLetter.toUpperCase();
-    //   return upperCase;
-    // });
-    // setSentence(filteredSentences.length);
   };
+
+  //characters
   const getCharacterNoSpace = (char) => {
     return setCharNoSpace(char.trim().replace(/ /g, "").length);
   };
 
+  //uniquewords
   const getUniqueWords = (uniqueword) => {
     let set = new Set(uniqueword.split(" "));
     return setUniqueWords(set.size);

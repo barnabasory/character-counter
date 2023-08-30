@@ -1,0 +1,120 @@
+.wrapper {
+  padding-top: 80px;
+
+  .input {
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    width: 100%;
+    height: 120px;
+    box-shadow: var(--box-shadow);
+    left: 0;
+
+    .input_field {
+      border: 1px solid black;
+      width: 100%;
+      margin: auto;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
+
+  .fonts {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    padding-top: 150px;
+    grid-gap: 20px;
+    .font_box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      grid-column: span 3;
+      height: 150px;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      overflow: hidden;
+      text-align: center;
+      flex-direction: column;
+      gap: 20px;
+
+      .font_name {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 500;
+      }
+
+      .copy_font {
+        display: flex;
+        font-size: 14px;
+      }
+      .hide_button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    .input {
+      height: 150px;
+      .input_field {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .fonts {
+      padding-top: 200px;
+
+      .font_box {
+        grid-column: span 12;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 700px) {
+  .wrapper {
+    .input {
+      height: 150px;
+      .input_field {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .fonts {
+      padding-top: 200px;
+
+      .font_box {
+        grid-column: span 6;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px) {
+  .wrapper {
+    .input {
+      height: 150px;
+      .input_field {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .fonts {
+      padding-top: 200px;
+
+      .font_box {
+        grid-column: span 4;
+      }
+    }
+  }
+}

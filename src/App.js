@@ -1,14 +1,28 @@
-import { Header, Dropdown, CharacterCounter } from "./exports/header";
+import {
+  Header,
+  CharacterCounter,
+  FontChanger,
+  ChangeCase,
+  BinaryTranslator,
+} from "./exports/header";
 import { Routes, Route } from "react-router-dom";
-import { useToggleMenuContext } from "./context/MenuContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 function App() {
-  const { toggleMenu } = useToggleMenuContext();
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/character-count");
+  }, []);
+
   return (
     <div>
-      {/* {toggleMenu && <Dropdown />} */}
       <Header />
       <Routes>
-        <Route exact path="/" element={<CharacterCounter />} />
+        <Route exact path="/character-count" element={<CharacterCounter />} />
+        <Route exact path="/font-changer" element={<FontChanger />} />
+        <Route exact path="/change-case" element={<ChangeCase />} />
+        <Route exact path="/binary-translator" element={<BinaryTranslator />} />
       </Routes>
     </div>
   );

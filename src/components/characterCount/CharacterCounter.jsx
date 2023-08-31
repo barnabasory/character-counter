@@ -9,6 +9,8 @@ const CharacterCounter = () => {
   const [sentence, setSentence] = useState(0);
   const [charNoSpace, setCharNoSpace] = useState(0);
   const [uniqueWords, setUniqueWords] = useState(0);
+  const [wordsPerReadingTime, setWordsPerReadingTime] = useState(0);
+  const [wordsPerSpeakingTime, setWordsPerSpeakingTime] = useState(0);
 
   const handleTexts = (e) => {
     const inputValue = e.target.value;
@@ -19,6 +21,8 @@ const CharacterCounter = () => {
     getSentencesCount(inputValue.trim());
     getCharacterNoSpace(inputValue.trim());
     getUniqueWords(inputValue.trim());
+    getReadingTime(inputValue);
+    getSpeakingTime(inputValue);
   };
 
   //words
@@ -54,6 +58,23 @@ const CharacterCounter = () => {
   const getUniqueWords = (uniqueword) => {
     let set = new Set(uniqueword.split(" "));
     return setUniqueWords(set.size);
+  };
+
+  //reading time
+  const getReadingTime = (wordPerReadingTime) => {
+    let wordPerMinute = 225;
+    const trimmedText = wordPerReadingTime.trim().split(" ").length;
+    console.log(trimmedText);
+    const calculatedReadingTime = trimmedText / wordPerMinute;
+    setWordsPerReadingTime(Math.floor(calculatedReadingTime));
+  };
+  //reading time
+  const getSpeakingTime = (wordPerSpeakingTime) => {
+    let wordPerMinute = 125;
+    const trimmedText = wordPerSpeakingTime.trim().split(" ").length;
+    console.log(trimmedText);
+    const calculatedSpeakingTime = trimmedText / wordPerMinute;
+    setWordsPerSpeakingTime(Math.floor(calculatedSpeakingTime));
   };
   return (
     <div className={`sw ${styles.wrapper}`}>
@@ -105,12 +126,12 @@ const CharacterCounter = () => {
         <div className={styles.reading_speech_time}>
           <div className={styles.reading_time}>
             <span>Reading Time</span>
-            <h2>0 Minute</h2>
+            <h2>{wordsPerReadingTime} Minute</h2>
           </div>
           <div className={styles.line_break}></div>
           <div className={styles.speech_time}>
             <span>Speech Time</span>
-            <h2>0 Minute</h2>
+            <h2>{wordsPerSpeakingTime} Minute</h2>
           </div>
         </div>
       </div>

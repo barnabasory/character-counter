@@ -4,6 +4,7 @@ export { default as CharacterCounter } from "../components/characterCount/Charac
 export { default as FontChanger } from "../components/fontChanger/FontChanger";
 export { default as ChangeCase } from "../components/changeCase/ChangeCase";
 export { default as BinaryTranslator } from "../components/binaryTranslator/BinaryTranslator";
+export { default as CompareTexts } from "../components/compare/CompareTexts";
 
 //data
 export { default as data } from "../components/header/dropdown/data";

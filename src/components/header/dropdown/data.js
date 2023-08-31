@@ -8,8 +8,8 @@ const data = [
   {
     id: 2,
     icon: require("../../../assets/icons/ab-testing.png"),
-    text: "Compare Text",
-    anchor: "compare-text",
+    text: "Compare Texts",
+    anchor: "compare-texts",
   },
   {
     id: 3,

@@ -28,8 +28,8 @@ const ChangeCase = () => {
     setValue(value.toLowerCase());
   };
   //upsideDown
-  const changeUpsideDown = (text) => {
-    const upsideDownChars = {
+  function changeUpsideDown(text) {
+    const upsideDownMap = {
       a: "ɐ",
       b: "q",
       c: "ɔ",
@@ -38,7 +38,7 @@ const ChangeCase = () => {
       f: "ɟ",
       g: "ƃ",
       h: "ɥ",
-      i: "ᴉ",
+      i: "ı",
       j: "ɾ",
       k: "ʞ",
       l: "l",
@@ -57,9 +57,9 @@ const ChangeCase = () => {
       y: "ʎ",
       z: "z",
       A: "∀",
-      B: "q",
+      B: "𐐒",
       C: "Ɔ",
-      D: "p",
+      D: "ᗡ",
       E: "Ǝ",
       F: "Ⅎ",
       G: "פ",
@@ -75,7 +75,7 @@ const ChangeCase = () => {
       Q: "Ό",
       R: "ᴚ",
       S: "S",
-      T: "┴",
+      T: "⊥",
       U: "∩",
       V: "Λ",
       W: "M",
@@ -92,12 +92,14 @@ const ChangeCase = () => {
       7: "ㄥ",
       8: "8",
       9: "6",
-      ",": "'",
       ".": "˙",
-      "?": "¿",
-      "!": "¡",
+      ",": "'",
       "'": ",",
       '"': ",,",
+      "`": ",",
+      "?": "¿",
+      "!": "¡",
+      _: "‾",
       "(": ")",
       ")": "(",
       "[": "]",
@@ -107,25 +109,39 @@ const ChangeCase = () => {
       "<": ">",
       ">": "<",
       "&": "⅋",
-      _: "‾",
       ";": "؛",
+      "^": "v",
+      v: "^",
+      "/": "\\",
+      "\\": "/",
+      "|": "|",
+      "-": "-",
+      "=": "Ǝ",
+      "+": "+",
+      "*": "*",
+      "#": "#",
+      "@": "@",
+      "%": "%",
+      $: "$",
     };
 
     const upsideDownTextArray = [];
-
-    for (let i = text.length - 1; i >= 0; i--) {
-      const char = text.charAt(i);
-      upsideDownTextArray.push(upsideDownChars[char] || char);
+    for (let char of text) {
+      if (upsideDownMap[char]) {
+        upsideDownTextArray.push(upsideDownMap[char]);
+      } else {
+        upsideDownTextArray.push(char);
+      }
     }
 
-    return upsideDownTextArray.join("");
-  };
+    setValue(upsideDownTextArray.join(""));
+  }
 
   //properCase
   const changeToProperCase = (text) => {
     const textArray = text.split(" ");
     const properCasedArray = textArray.map(
-      (arr) => arr[0].toUpperCase() + arr.slice(1, arr.length)
+      (arr) => arr[0].toUpperCase() + arr.slice(1, arr.length).toLowerCase()
     );
 
     const joinedArray = properCasedArray.join(" ");
@@ -143,11 +159,8 @@ const ChangeCase = () => {
   };
   //reverseCase
   const changeToReverseCase = (text) => {
-    const textArray = text.split(" ");
-    const reversedCaseArray = textArray.map((arr) => arr);
-    console.log(reversedCaseArray);
-
-    const joinedArray = reversedCaseArray.join(" ");
+    const textString = text.split("").reverse().join("");
+    setValue(textString);
   };
   return (
     <div className={`sw ${styles.wrapper}`}>
@@ -161,7 +174,7 @@ const ChangeCase = () => {
         <button onClick={changeToUpperCase}>UPPERCASE</button>
         <button onClick={changeToLowerCase}>lowercase</button>
         <button onClick={() => changeUpsideDown(value)}>upsideDown</button>
-        <button onClick={() => changeToReverseCase(value)}>Reverse Case</button>
+        <button onClick={() => changeToReverseCase(value)}>reversedCase</button>
         <button>rANDom casE</button>
         <button onClick={() => changeToProperCase(value)}>Proper Case</button>
         <button onClick={() => changeToToggleCase(value)}>tOGGLE cASE</button>

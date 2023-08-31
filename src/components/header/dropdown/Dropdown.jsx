@@ -34,16 +34,20 @@ const Dropdown = () => {
                 </span>
               </Link>
               {/* Compare Text */}
-              <div className={`ar ${styles.dropdown_menu_link}`}>
+              <Link
+                to="/compare-texts"
+                className={`ar ${styles.dropdown_menu_link}`}
+                onClick={() => setToggleMenu(!toggleMenu)}
+              >
                 <img
                   src={ab_testing}
                   alt=""
                   className={styles.dropdown_menu_icon}
                 />
                 <span className={styles.dropdown_menu_icon_text}>
-                  Compare Text
+                  Compare Texts
                 </span>
-              </div>
+              </Link>
               {/* Font Changer */}
               <Link
                 to="/font-changer"
@@ -59,17 +63,6 @@ const Dropdown = () => {
                   Font Changer
                 </span>
               </Link>
-              {/*  Counter */}
-              <div className={`bs ${styles.dropdown_menu_link}`}>
-                <img
-                  src={counter}
-                  alt=""
-                  className={styles.dropdown_menu_icon}
-                />
-                <span className={styles.dropdown_menu_icon_text}>
-                  Word Counter
-                </span>
-              </div>
               {/* Binary Translator */}
               <Link
                 to="/binary-translator"

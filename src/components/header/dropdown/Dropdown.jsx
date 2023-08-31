@@ -33,7 +33,7 @@ const Dropdown = () => {
                   Character Count
                 </span>
               </Link>
-              {/* Compare Text */}
+              {/* Compare Text
               <Link
                 to="/compare-texts"
                 className={`ar ${styles.dropdown_menu_link}`}
@@ -47,7 +47,7 @@ const Dropdown = () => {
                 <span className={styles.dropdown_menu_icon_text}>
                   Compare Texts
                 </span>
-              </Link>
+              </Link> */}
               {/* Font Changer */}
               <Link
                 to="/font-changer"

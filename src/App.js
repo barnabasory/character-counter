@@ -4,7 +4,6 @@ import {
   FontChanger,
   ChangeCase,
   BinaryTranslator,
-  CompareTexts,
 } from "./exports/header";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
@@ -24,7 +23,6 @@ function App() {
         <Route exact path="/font-changer" element={<FontChanger />} />
         <Route exact path="/change-case" element={<ChangeCase />} />
         <Route exact path="/binary-translator" element={<BinaryTranslator />} />
-        <Route exact path="/compare-texts" element={<CompareTexts />} />
       </Routes>
     </div>
   );

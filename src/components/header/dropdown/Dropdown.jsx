@@ -49,7 +49,7 @@ const Dropdown = () => {
                 </span>
               </Link> */}
               {/* Font Changer */}
-              <Link
+              {/* <Link
                 to="/font-changer"
                 className={`font ${styles.dropdown_menu_link}`}
                 onClick={() => setToggleMenu(!toggleMenu)}
@@ -62,9 +62,9 @@ const Dropdown = () => {
                 <span className={styles.dropdown_menu_icon_text}>
                   Font Changer
                 </span>
-              </Link>
+              </Link> */}
               {/* Binary Translator */}
-              <Link
+              {/* <Link
                 to="/binary-translator"
                 className={`bi ${styles.dropdown_menu_link}`}
                 onClick={() => setToggleMenu(!toggleMenu)}
@@ -77,7 +77,7 @@ const Dropdown = () => {
                 <span className={styles.dropdown_menu_icon_text}>
                   Binary Translator
                 </span>
-              </Link>
+              </Link> */}
               {/* Case Converter */}
               <Link
                 to="/change-case"

@@ -24,11 +24,6 @@ const Header = () => {
         </div>
 
         {matchingLink && <h1 className={styles.logo}>{matchingLink.text}</h1>}
-
-        <div className={styles.toggleTheme}>
-          {/* {<BsFillSunFill />} */}
-          {<BsFillMoonFill />}
-        </div>
       </section>
       <Dropdown />
     </>

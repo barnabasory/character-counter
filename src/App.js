@@ -20,9 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/character-count" element={<CharacterCounter />} />
-        <Route exact path="/font-changer" element={<FontChanger />} />
         <Route exact path="/change-case" element={<ChangeCase />} />
-        <Route exact path="/binary-translator" element={<BinaryTranslator />} />
       </Routes>
     </div>
   );

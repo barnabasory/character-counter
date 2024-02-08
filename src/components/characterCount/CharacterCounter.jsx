@@ -15,8 +15,8 @@ const CharacterCounter = () => {
   const handleTexts = (e) => {
     const inputValue = e.target.value;
     setValue(inputValue);
-    setCharacters(inputValue.trim().length);
     getWordsCount(inputValue.trim());
+    getCharacterCount(inputValue.trim());
     getParagraphCount(inputValue.trim());
     getSentencesCount(inputValue.trim());
     getCharacterNoSpace(inputValue.trim());
@@ -25,12 +25,30 @@ const CharacterCounter = () => {
     getSpeakingTime(inputValue);
   };
 
+  //character
+  const getCharacterCount = (char) => {
+    if (!char) {
+      setCharacters(0);
+    }
+
+    char = char.replace(/\n/g, "");
+    return setCharacters(char.trim().length);
+  };
+
   //words
   const getWordsCount = (str) => {
     if (!str) {
-      return setWords(0);
+      setWords(0);
+    } else {
+      const wordsArray = str.split(/\s+/);
+      const nonEmptyWordsArray = wordsArray.filter(
+        (word) => word.trim() !== ""
+      );
+
+      setWords(nonEmptyWordsArray.length);
     }
-    return setWords(str.split(" ").length + 1);
+
+    return setWords;
   };
 
   //paragraph
@@ -38,15 +56,15 @@ const CharacterCounter = () => {
     if (!paragraph) {
       return setParagraphs(0);
     }
-    return setParagraphs(paragraph.trim().split("\n\n").length);
+    return setParagraphs(paragraph.trim().split("\n\n").length - 1);
   };
 
   //sentences
   const getSentencesCount = (sentence) => {
-    if (!sentence) {
+    if (sentence == " ") {
       return setWords(0);
     }
-    setSentence(sentence.trim().split(/[.?!]/g).filter(Boolean).length);
+    return setSentence(sentence.trim().split(".").length - 1);
   };
 
   //characters
@@ -56,23 +74,28 @@ const CharacterCounter = () => {
 
   //uniquewords
   const getUniqueWords = (uniqueword) => {
-    let set = new Set(uniqueword.split(" "));
+    if (!uniqueword) {
+      setUniqueWords(0);
+    }
+    const set = new Set(uniqueword.split(/[ \n]+/));
     return setUniqueWords(set.size);
   };
 
   //reading time
   const getReadingTime = (wordPerReadingTime) => {
+    if (wordPerReadingTime > 0) {
+      setWordsPerReadingTime("< 1");
+    }
     let wordPerMinute = 225;
     const trimmedText = wordPerReadingTime.trim().split(" ").length;
-    console.log(trimmedText);
     const calculatedReadingTime = trimmedText / wordPerMinute;
     setWordsPerReadingTime(Math.floor(calculatedReadingTime));
   };
+
   //reading time
   const getSpeakingTime = (wordPerSpeakingTime) => {
     let wordPerMinute = 125;
     const trimmedText = wordPerSpeakingTime.trim().split(" ").length;
-    console.log(trimmedText);
     const calculatedSpeakingTime = trimmedText / wordPerMinute;
     setWordsPerSpeakingTime(Math.floor(calculatedSpeakingTime));
   };
@@ -120,9 +143,7 @@ const CharacterCounter = () => {
             <h2>{uniqueWords}</h2>
           </div>
         </div>
-        <div className={styles.keywords}>
-          Start typing to get a list of keywords.
-        </div>
+
         <div className={styles.reading_speech_time}>
           <div className={styles.reading_time}>
             <span>Reading Time</span>

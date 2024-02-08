@@ -1,21 +1,32 @@
 import styles from "./FontChanger.module.scss";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 const FontChanger = () => {
   const [value, setValue] = useState("");
-  const [fontsArray, setFontsArray] = useState(
-    [].map((fonts) => ({ ...fonts, copied: false }))
-  );
+  const [fontsArray, setFontsArray] = useState([].map(item => (...fontsArray, item.isCopied: false)));
 
-  useEffect(() => {
-    fetch(
-      `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCr1nkSWIVb-g2ppoVCEp3whtY7blQt3m8&sort=style`
-    )
-      .then((response) => response.json())
-      .then((data) => setFontsArray(data.items.slice(0, 20)));
+  const fetchFonts = async () => {
+    try {
+      // Fetch data from the URL
+      const response = await axios.get(
+        "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCr1nkSWIVb-g2ppoVCEp3whtY7blQt3m8"
+      );
 
-    return () => {};
-  }, []);
+      // Extract font data from the response
+      const fontData = response.data.items.slice(0, 20);
+
+      // Log the font data
+
+      setFontsArray(fontData);
+    } catch (error) {
+      // Handle any errors that occur during fetching
+      console.error("Error fetching fonts:", error);
+    }
+  };
+
+  // Call the fetchFonts function
+  fetchFonts();
 
   function clickToCopy(family) {
     setFontsArray((fonts) =>
@@ -55,7 +66,7 @@ const FontChanger = () => {
         />
       </div>
       <div className={styles.fonts}>
-        {fontsArray.map((font) => (
+        {fontsArray?.map((font) => (
           <div className={styles.font_box} key={font.family}>
             <style>
               {`

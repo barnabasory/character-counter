@@ -1,4 +1,7 @@
 import styles from "./CharacterCounter.module.scss";
+import headerStyles from "../header/Header.module.scss";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/MenuContext";
 import { useState } from "react";
 
 const CharacterCounter = () => {
@@ -11,6 +14,8 @@ const CharacterCounter = () => {
   const [uniqueWords, setUniqueWords] = useState(0);
   const [wordsPerReadingTime, setWordsPerReadingTime] = useState(0);
   const [wordsPerSpeakingTime, setWordsPerSpeakingTime] = useState(0);
+
+  const { colorTheme } = useContext(ThemeContext);
 
   const handleTexts = (e) => {
     const inputValue = e.target.value;
@@ -28,7 +33,7 @@ const CharacterCounter = () => {
   //character
   const getCharacterCount = (char) => {
     if (!char) {
-      setCharacters(0);
+      return setCharacters(0);
     }
 
     char = char.replace(/\n/g, "");
@@ -38,7 +43,7 @@ const CharacterCounter = () => {
   //words
   const getWordsCount = (str) => {
     if (!str) {
-      setWords(0);
+      return setWords(0);
     } else {
       const wordsArray = str.split(/\s+/);
       const nonEmptyWordsArray = wordsArray.filter(
@@ -75,7 +80,7 @@ const CharacterCounter = () => {
   //uniquewords
   const getUniqueWords = (uniqueword) => {
     if (!uniqueword) {
-      setUniqueWords(0);
+      return setUniqueWords(0);
     }
     const set = new Set(uniqueword.split(/[ \n]+/));
     return setUniqueWords(set.size);
@@ -83,9 +88,6 @@ const CharacterCounter = () => {
 
   //reading time
   const getReadingTime = (wordPerReadingTime) => {
-    if (wordPerReadingTime > 0) {
-      setWordsPerReadingTime("< 1");
-    }
     let wordPerMinute = 225;
     const trimmedText = wordPerReadingTime.trim().split(" ").length;
     const calculatedReadingTime = trimmedText / wordPerMinute;
@@ -95,27 +97,63 @@ const CharacterCounter = () => {
   //reading time
   const getSpeakingTime = (wordPerSpeakingTime) => {
     let wordPerMinute = 125;
-    const trimmedText = wordPerSpeakingTime.trim().split(" ").length;
-    const calculatedSpeakingTime = trimmedText / wordPerMinute;
+    const trimmedTextLength = wordPerSpeakingTime.trim().split(" ").length;
+    const calculatedSpeakingTime = trimmedTextLength / wordPerMinute;
     setWordsPerSpeakingTime(Math.floor(calculatedSpeakingTime));
   };
   return (
-    <div className={`sw ${styles.wrapper}`}>
-      <div className={styles.display_fields_upper}>
-        <div className={styles.characters}>
+    <div
+      className={`sw ${styles.wrapper} ${
+        colorTheme === "theme-light"
+          ? headerStyles.theme_light
+          : headerStyles.theme_dark
+      }`}
+    >
+      <div
+        className={`${styles.display_fields_upper} ${
+          colorTheme === "theme-light"
+            ? headerStyles.theme_light
+            : headerStyles.theme_dark
+        }`}
+      >
+        <div
+          className={`${styles.characters} ${
+            colorTheme === "theme-light"
+              ? headerStyles.theme_light
+              : headerStyles.theme_dark
+          } `}
+        >
           <span>Characters</span>
           <h2>{characters}</h2>
         </div>
 
-        <div className={styles.words}>
+        <div
+          className={` ${styles.words} ${
+            colorTheme === "theme-light"
+              ? headerStyles.theme_light
+              : headerStyles.theme_dark
+          }`}
+        >
           <span>Words</span>
           <h2>{words}</h2>
         </div>
-        <div className={styles.paragraphs}>
+        <div
+          className={` ${styles.paragraphs} ${
+            colorTheme === "theme-light"
+              ? headerStyles.theme_light
+              : headerStyles.theme_dark
+          }`}
+        >
           <span>Paragraphs</span>
           <h2>{paragraphs}</h2>
         </div>
-        <div className={styles.sentences}>
+        <div
+          className={`${styles.sentences} ${
+            colorTheme === "theme-light"
+              ? headerStyles.theme_light
+              : headerStyles.theme_dark
+          }`}
+        >
           <span>Sentences</span>
           <h2>{sentence}</h2>
         </div>

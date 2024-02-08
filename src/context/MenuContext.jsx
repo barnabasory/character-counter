@@ -1,17 +1,52 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
-const ToggleMenuContext = createContext({});
-const MenuContext = ({ children }) => {
+export const ThemeContext = createContext(null);
+
+const ToggleThemeContext = ({ children }) => {
+  const [colorTheme, setColorTheme] = useState("theme-light");
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  useEffect(() => {
+    const themeColor = localStorage.getItem("theme-color");
+    if (themeColor) {
+      setColorTheme(themeColor);
+    }
+  }, [colorTheme, setColorTheme]);
+
+  const handleThemeChange = (theme) => {
+    setColorTheme(theme);
+    localStorage.setItem("theme-color", theme);
+  };
   return (
-    <ToggleMenuContext.Provider value={{ toggleMenu, setToggleMenu }}>
+    <ThemeContext.Provider
+      value={{
+        colorTheme,
+        setColorTheme,
+        toggleMenu,
+        setToggleMenu,
+        handleThemeChange,
+      }}
+    >
       {children}
-    </ToggleMenuContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
-export default MenuContext;
+export default ToggleThemeContext;
+// import { createContext, useContext, useState } from "react";
 
-export const useToggleMenuContext = () => {
-  return useContext(ToggleMenuContext);
-};
+// const ToggleMenuContext = createContext({});
+// const MenuContext = ({ children }) => {
+//   const [toggleMenu, setToggleMenu] = useState(false);
+//   return (
+//     <ToggleMenuContext.Provider value={{ toggleMenu, setToggleMenu }}>
+//       {children}
+//     </ToggleMenuContext.Provider>
+//   );
+// };
+
+// export default MenuContext;
+
+// export const useToggleMenuContext = () => {
+//   return useContext(ToggleMenuContext);
+// };

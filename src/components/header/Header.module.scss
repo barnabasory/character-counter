@@ -41,7 +41,21 @@
       background-color: black;
       color: rgba($color: #000000, $alpha: 0.6);
     }
+
+    .theme_dark {
+      background-color: black;
+      color: white;
+    }
   }
+}
+
+.theme_dark {
+  background-color: #000000;
+  color: white;
+}
+.theme_light {
+  background-color: white;
+  color: black;
 }
 
 @media screen and (max-width: 600px) {

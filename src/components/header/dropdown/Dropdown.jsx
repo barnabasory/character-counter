@@ -7,11 +7,12 @@ import {
   calculator,
   uppercase_interface_button,
 } from "../../../exports/icons";
-import { useToggleMenuContext } from "../../../context/MenuContext";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/MenuContext";
 
 const Dropdown = () => {
-  const { toggleMenu, setToggleMenu } = useToggleMenuContext();
+  const { toggleMenu, setToggleMenu } = useContext(ThemeContext);
   return (
     <>
       {toggleMenu && (
@@ -49,7 +50,7 @@ const Dropdown = () => {
                 </span>
               </Link> */}
               {/* Font Changer */}
-              {/* <Link
+              <Link
                 to="/font-changer"
                 className={`font ${styles.dropdown_menu_link}`}
                 onClick={() => setToggleMenu(!toggleMenu)}
@@ -62,7 +63,7 @@ const Dropdown = () => {
                 <span className={styles.dropdown_menu_icon_text}>
                   Font Changer
                 </span>
-              </Link> */}
+              </Link>
               {/* Binary Translator */}
               {/* <Link
                 to="/binary-translator"

@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 
 const FontChanger = () => {
   const [value, setValue] = useState("");
-  const [fontsArray, setFontsArray] = useState([].map(item => (...fontsArray, item.isCopied: false)));
+  const [fontsArray, setFontsArray] = useState(
+    [].map((item) => ({ ...item, isCopied: false }))
+  );
 
   const fetchFonts = async () => {
     try {
@@ -43,7 +45,7 @@ const FontChanger = () => {
           font.family === family ? { ...font, copied: false } : font
         )
       );
-    }, 1000);
+    }, 2000);
 
     clearTimeout(() => {
       clearCopy();
@@ -73,7 +75,7 @@ const FontChanger = () => {
           @font-face {
             font-family: ${font.family};
             src: url(${font.menu});
-            font-weight: :100
+            font-weight: 100
           }
         `}
             </style>
